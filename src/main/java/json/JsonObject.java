@@ -41,8 +41,14 @@ public class JsonObject extends Json {
         array.put(jsonPair.key, jsonPair.value);
     }
 
+    boolean containes(String name) {
+        return array.containsKey(name);
+    }
+
     public Json find(String name) {
-        return array.get(name);
+        if (containes(name))
+            return array.get(name);
+        return new JsonNull();
     }
 
     public JsonObject projection(String... names) {

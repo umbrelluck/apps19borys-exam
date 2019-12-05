@@ -26,6 +26,6 @@ public class BasicStudent implements Jsonable {
         res.add(new JsonPair("name", new JsonString(name)));
         res.add(new JsonPair("surname", new JsonString(surname)));
         res.add(new JsonPair("year", new JsonNumber(year)));
-        return null;
+        return res;
     }
 }
