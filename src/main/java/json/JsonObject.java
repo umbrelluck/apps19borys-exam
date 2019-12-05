@@ -56,6 +56,8 @@ public class JsonObject extends Json {
         for (String name : names)
             res.add(new JsonPair(name, array.get(name)));
 //        res = res.replace(", ", "}");
+        if (res.toJson().equals("{}"))
+            return null;
         return res;
 //        return "{}";
     }
