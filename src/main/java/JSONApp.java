@@ -36,8 +36,32 @@ public class JSONApp {
 
 
     public static JsonObject sessionResult() {
-        JsonObject jsonObject = new JsonObject();
-        // ToDo
+        JsonObject jsonObject;
+        JsonPair name = new JsonPair("name", new JsonString("Andrii"));
+        JsonPair surname = new JsonPair("surname", new JsonString("Rodionov"));
+
+        JsonObject oop = new JsonObject();
+        oop.add(new JsonPair("course", new JsonString("OOP")));
+        oop.add(new JsonPair("mark", new JsonNumber(3)));
+        oop.add(new JsonPair("passed", new JsonBoolean(true)));
+
+        JsonObject eng = new JsonObject();
+        eng.add(new JsonPair("course", new JsonString("English")));
+        eng.add(new JsonPair("mark", new JsonNumber(5)));
+        eng.add(new JsonPair("passed", new JsonBoolean(true)));
+
+        JsonObject math = new JsonObject();
+        math.add(new JsonPair("course", new JsonString("Math")));
+        math.add(new JsonPair("mark", new JsonNumber(2)));
+        math.add(new JsonPair("passed", new JsonBoolean(false)));
+
+        Json jMarks = new JsonArray(oop, eng, math);
+        JsonPair marks = new JsonPair("exams", jMarks);
+
+        JsonPair year = new JsonPair("year", new JsonNumber(2));
+
+        jsonObject = new JsonObject(name, surname, year, marks);
+
         return jsonObject;
     }
 }
