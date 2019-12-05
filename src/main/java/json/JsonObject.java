@@ -16,21 +16,21 @@ public class JsonObject extends Json {
         for (JsonPair elem : jsonPairs) {
             add(elem);
         }
-        int i=0;
-        i=6;
+        int i = 0;
+        i = 6;
     }
 
     @Override
     public String toJson() {
         String res = "{";
         for (java.util.Map.Entry<String, Json> stringJsonEntry : array.entrySet()) {
-            res=
+            res =
                     res.concat("'" + stringJsonEntry.getKey() + "': " + stringJsonEntry.getValue().toJson() + ", ");
         }
-        if (res.equals("{")){
+        if (res.equals("{")) {
             return "{}";
         }
-        res=res.substring(0,res.length()-2)+"}";
+        res = res.substring(0, res.length() - 2) + "}";
 //        res = res.replace(", ", "}");
         return res;
 //        return "{}";
@@ -46,7 +46,11 @@ public class JsonObject extends Json {
     }
 
     public JsonObject projection(String... names) {
-        // ToDo
-        return null;
+        JsonObject res = new JsonObject();
+        for (String name : names)
+            res.add(new JsonPair(name, array.get(name)));
+//        res = res.replace(", ", "}");
+        return res;
+//        return "{}";
     }
 }
