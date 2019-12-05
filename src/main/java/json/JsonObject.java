@@ -48,16 +48,17 @@ public class JsonObject extends Json {
     public Json find(String name) {
         if (containes(name))
             return array.get(name);
-        return new JsonNull();
+        return null;
     }
 
     public JsonObject projection(String... names) {
         JsonObject res = new JsonObject();
         for (String name : names)
-            res.add(new JsonPair(name, array.get(name)));
+            if (containes(name))
+                res.add(new JsonPair(name, array.get(name)));
 //        res = res.replace(", ", "}");
-        if (res.toJson().equals("{}"))
-            return null;
+//        if (res.toJson().equals("{}"))
+//            return null;
         return res;
 //        return "{}";
     }
